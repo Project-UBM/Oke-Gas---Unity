@@ -12,6 +12,20 @@ public class GameManager : MonoBehaviour {
     private int score;
     public int Score => score;
 
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            DestroyImmediate(gameObject);
+        }
+        else
+        {
+            Instance = this;
+            Application.targetFrameRate = 60;
+            DontDestroyOnLoad(gameObject);
+            // Pause();
+        }
+    }
     public void Play() {
         // score = 0;
         // scoreText.text = score.ToString();

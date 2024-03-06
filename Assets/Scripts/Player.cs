@@ -50,10 +50,17 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Obstacle")) {
-            GameManager.Instance.GameOver();
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.tag == "Obstacle") {
+            FindObjectOfType<GameManager>().GameOver();
         }
+    }
+
+    private void OnEnable()
+    {
+        Vector3 position = transform.position;
+        position.y = 0f;
+        transform.position = position;
+        direction = Vector3.zero;
     }
 }
