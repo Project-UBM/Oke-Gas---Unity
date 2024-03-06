@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 
     private int spriteIndex;
 
-    private Vector3 direction;
+    private Vector3 direction = Vector3.zero;
 
     public float gravity = -9.8f;
 
@@ -25,11 +25,12 @@ public class Player : MonoBehaviour
     }
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.W)) {
+        if (Input.GetKey(KeyCode.W)) {
             direction = Vector3.up * strength;
-        }
-        if (Input.GetKeyDown(KeyCode.S)) {
+        } else if (Input.GetKey(KeyCode.S)) {
             direction = Vector3.down * strength;
+        } else {
+            direction = Vector3.zero;
         }
 
         transform.position += direction * Time.deltaTime;
@@ -46,6 +47,13 @@ public class Player : MonoBehaviour
         }
         if (spriteIndex < sprites.Length && spriteIndex >= 0) {
             spriteRenderer.sprite = sprites[spriteIndex];
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Obstacle")) {
+            GameManager.Instance.GameOver();
         }
     }
 }

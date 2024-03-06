@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject prefabs;
+    public GameObject prefab;
     public float spawnRate = 1f;
     public float minHeight = -1f;
     public float maxHeight = 2f;
@@ -21,7 +21,7 @@ public class Spawner : MonoBehaviour
 
     private void Spawn()
     {
-        GameObject lobang = Instantiate(prefabs, transform.position, Quaternion.identity);
+        GameObject lobang = Instantiate(prefab, transform.position, Quaternion.identity);
         lobang.transform.position += Vector3.up * Random.Range(minHeight, maxHeight);
     }
 }
