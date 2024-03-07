@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour {
                 lobang.speed = lobangSpeed;
             }
 
-            FindObjectOfType<Parallax>().animationSpeed += 0.07f / lobangSpeed;
+            FindObjectOfType<Parallax>().animationSpeed += 0.07f / lobangSpeed; 
         }
     }
 
