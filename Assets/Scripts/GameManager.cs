@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private Player player;
     [SerializeField] private Text scoreText;
     [SerializeField] private GameObject playButton;
+    [SerializeField] private GameObject restartButton;
     [SerializeField] private GameObject gameOver;
     
     [SerializeField] private AudioSource carSound;
@@ -64,6 +65,7 @@ public class GameManager : MonoBehaviour {
         scoreText.text = score.ToString();
 
         playButton.SetActive(false);
+        restartButton.SetActive(false);
         gameOver.SetActive(false);
         
         player.enabled = true;
@@ -89,7 +91,7 @@ public class GameManager : MonoBehaviour {
 
     public void GameOver() {
         gameOver.SetActive(true);
-        playButton.SetActive(true);
+        restartButton.SetActive(true);
 
         // play car crash sound effect here and stop others
         crashSound.Play();
